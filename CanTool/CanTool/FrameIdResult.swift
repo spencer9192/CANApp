@@ -9,24 +9,18 @@
 import UIKit
 
 class FrameIdResult: UIViewController {
-
     
     @IBOutlet weak var frameDecLabel: UILabel!
     @IBOutlet weak var frameHexLabel: UILabel!
-    
     @IBOutlet weak var pgnField: UITextField!
     @IBOutlet weak var priorityField: UITextField!
     @IBOutlet weak var reservedBitField: UITextField!
-    
     @IBOutlet weak var dataPageField: UITextField!
     @IBOutlet weak var pdufField: UITextField!
-    
     @IBOutlet weak var pdusField: UITextField!
     @IBOutlet weak var sourceAddressField: UITextField!
     
-    
     var frameId:UInt32 = 0
-    
     var pgn:UInt32 = 0
     var priority:UInt8 = 0
     var reservedBit:UInt8 = 0
@@ -34,7 +28,6 @@ class FrameIdResult: UIViewController {
     var pduf:UInt8 = 0
     var pdus:UInt8 = 0
     var sourceAddress:UInt8 = 0
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -64,7 +57,6 @@ class FrameIdResult: UIViewController {
             dataPage      = UInt8((data >> 24) & 0x00000001)
             reservedBit   = UInt8((data >> 25) & 0x00000001)
             priority      = UInt8((data >> 26) & 0x00000007)
-            
            
             pgn = UInt32(reservedBit) & 0x00000001
             pgn <<= 1
@@ -92,13 +84,9 @@ class FrameIdResult: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    
     @IBAction func cancelToViewController2(segue:UIStoryboardSegue) {
         print("Cancelling")
     }
-    
-    
-    // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -107,6 +95,4 @@ class FrameIdResult: UIViewController {
      //   let destinationViewController = navController.topViewController as! FirstViewController
         print("Unwinding")
     }
-
-
 }
